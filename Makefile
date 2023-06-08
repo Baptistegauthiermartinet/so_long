@@ -1,33 +1,54 @@
 NAME = so_long
-HEAD = so_long.h
-MLX_PATH = mlx_linux/
-MLX_LIB = 
-SRC = 
-OBJ_DIR = obj/
-OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 CC = cc -Wall -Wextra -Werror
+RM = rm -rf
+SRC_PATH = ./src/
+SRC_FILE = so_long.c
 
 
-$(OBJ_DIR)%.o: %.c
-	mkdir -p $(shell dirname $@)
-	$(CC) -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
-$(NAME): $(OBJ)
-	$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
+SRC = $(addprefix $(SRC_PATH), $(SRC_FILE))
+OBJ = $(SRC:.c=.o)
+
+
+INCLUDE_PATH = ./includes/
+INCLUDE_FILE = so_long.h
+
+LIBFT_PATH = ./libft/
+LIBFT_FILE = libft.a
+LIBFT_LIB = $(addprefix $(LIBFT_PATH), $(LIBFT_FILE))
+
+
+
+MLX_PATH = ./mlx_linux/
+MLX_FILE = libmlx.a
+MLX_LIB = $(addprefix $(MLX_PATH), $(MLX_FILE))
+MLX_FLAGS = -lX11 -lXext
+MLX_EX = $(MLX_LIB) $(MLX_FLAGS)
+
+.c.o :
+	$(CC) -c $< -o $@
 
 all : $(NAME)
 
-%.o : %.c $(HEAD)
+lib :
+	make -C $(LIBFT_PATH)
 
-${OBJ_DIR} :
-	mkdir $(OBJ_DIR)
+mlx :
+	make -C $(MLX_PATH)
+
+$(NAME) : lib mlx $(OBJ)
+	$(CC) $(OBJ) $(LIBFT_LIB) $(MLX_EX) -o $(NAME)
 
 clean :
-	rm -rf $(OBJ_DIR)
+	make clean -C $(MLX_PATH)
+	make clean -C $(LIBFT_PATH)
+	$(RM) $(OBJ)
 
 fclean : clean
-	rm -rf $(NAME)
+	$(RM) $(NAME)
+	make fclean -C $(LIBFT_PATH)
+
 
 re : fclean all
 

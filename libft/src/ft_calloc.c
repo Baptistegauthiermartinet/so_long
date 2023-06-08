@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgauthie <bgauthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/08 13:04:36 by bgauthie          #+#    #+#             */
-/*   Updated: 2023/06/08 15:26:19 by bgauthie         ###   ########.fr       */
+/*   Created: 2023/01/10 15:23:19 by bgauthie          #+#    #+#             */
+/*   Updated: 2023/01/10 15:23:22 by bgauthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include "../libft/src/libft.h"
-
-typedef struct s_pos
+void	*ft_calloc(size_t count, size_t size)
 {
-	int	x;
-	int	y;
-}				t_pos;
+	void	*s;
 
-typedef struct	s_data 
-{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
-
-
-
-#endif
+	if (count > 0 && (size != size * count / count))
+		return (NULL);
+	s = malloc(size * count);
+	if (s == NULL)
+		return (NULL);
+	ft_bzero(s, size * count);
+	return (s);
+}
