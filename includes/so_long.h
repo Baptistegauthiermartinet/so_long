@@ -6,7 +6,7 @@
 /*   By: bgauthie <bgauthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 13:04:36 by bgauthie          #+#    #+#             */
-/*   Updated: 2023/06/08 15:26:19 by bgauthie         ###   ########.fr       */
+/*   Updated: 2023/06/16 10:46:27 by bgauthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include "../libft/src/libft.h"
+# include <fcntl.h>
 
 typedef struct s_pos
 {
@@ -31,6 +32,7 @@ typedef struct	s_data
 	int		endian;
 }				t_data;
 
+int	get_map();
 
 
 #endif

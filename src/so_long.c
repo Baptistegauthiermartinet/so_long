@@ -6,7 +6,7 @@
 /*   By: bgauthie <bgauthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 13:47:12 by bgauthie          #+#    #+#             */
-/*   Updated: 2023/06/08 16:47:14 by bgauthie         ###   ########.fr       */
+/*   Updated: 2023/06/16 10:49:56 by bgauthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 int main()
 {
+	get_map();
 	
 
 
