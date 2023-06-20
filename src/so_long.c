@@ -6,11 +6,10 @@
 /*   By: bgauthie <bgauthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 13:47:12 by bgauthie          #+#    #+#             */
-/*   Updated: 2023/06/16 10:49:56 by bgauthie         ###   ########.fr       */
+/*   Updated: 2023/06/20 17:02:34 by bgauthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../mlx_linux/mlx.h"
 #include "../includes/so_long.h"
 
 
@@ -24,9 +23,14 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 int main()
 {
-	get_map();
+	char	**map;
+	int i = 0;
+	map = get_map();
 	
-
+	
+	while (map[i] != NULL)
+		ft_printf("%s\n", map[i++]);
+	
 
 	
 /*
