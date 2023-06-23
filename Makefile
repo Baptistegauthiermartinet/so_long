@@ -1,9 +1,10 @@
 NAME = so_long
-CC = cc -Wall -Wextra -Werror
+CC = cc -Wall -Wextra -Werror -ggdb
 RM = rm -rf
 SRC_PATH = ./src/
 SRC_FILE = so_long.c\
-			map_checker.c
+			map_checker.c\
+			tools.c
 
 
 

@@ -6,7 +6,7 @@
 /*   By: bgauthie <bgauthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 13:47:12 by bgauthie          #+#    #+#             */
-/*   Updated: 2023/06/20 17:02:34 by bgauthie         ###   ########.fr       */
+/*   Updated: 2023/06/23 15:57:07 by bgauthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,18 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 int main()
 {
-	char	**map;
-	int i = 0;
-	map = get_map();
+	t_data	data;
+
+	set_struct(&data);
+	data.map = get_map();
+	print_map(&data);
+	if (!check_perimeter(data.map, &data))
+		return (ft_printf("Erreur de map"));
+	if (!check_chars(&data))
+		return (ft_printf("c error"));
+	return (1);
 	
 	
-	while (map[i] != NULL)
-		ft_printf("%s\n", map[i++]);
 	
 
 	
@@ -56,3 +61,4 @@ int main()
 	*/
 
 }
+
