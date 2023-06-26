@@ -6,7 +6,7 @@
 /*   By: bgauthie <bgauthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 14:03:49 by bgauthie          #+#    #+#             */
-/*   Updated: 2023/06/23 16:13:08 by bgauthie         ###   ########.fr       */
+/*   Updated: 2023/06/26 17:28:06 by bgauthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,24 @@ void	set_struct(t_data *data)
 	data->collectible = 'C';
 	data->exit = 'E';
 	data->start = 'P';
+	data->pos.x = 1;
+	data->pos.y = 1;
+	
+}
+
+void	set_size(char **map, t_pos *size)
+{
+	int	line;
+	int	raw;
+
+	line = 0;
+	raw = 0;
+	while (map[line][raw])
+		raw++;
+	while (map[line])
+		line++;
+	size->x = raw;
+	size->y = line;
 }
 
 int	print_error(void)

@@ -6,7 +6,7 @@
 /*   By: bgauthie <bgauthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 16:36:24 by bgauthie          #+#    #+#             */
-/*   Updated: 2023/06/23 16:16:12 by bgauthie         ###   ########.fr       */
+/*   Updated: 2023/06/26 18:42:19 by bgauthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,23 +92,48 @@ bool	check_line(char *str, t_data *data)
 bool	check_chars(t_data *data)
 {
 	size_t	i;
-	int		exit;
-	int		start;
-	int		collect;
 
 	i = 0;
-	exit = 0;
-	start = 0;
-	collect = 0;
+	data->exit_nb = 0;
+	data->start_nb = 0;
+	data->collect_nb = 0;
 	while (data->map[i])
 	{
-		exit += nb_of(data->map[i], data->exit);
-		start += nb_of(data->map[i], data->start);
-		collect += nb_of(data->map[i], data->collectible);
+		data->exit_nb += nb_of(data->map[i], data->exit);
+		data->start_nb += nb_of(data->map[i], data->start);
+		data->collect_nb += nb_of(data->map[i], data->collectible);
 		i++;
 	}
-	if (exit == 1 && start == 1 && collect >= 1)
+	if (data->exit_nb == 1 && data->start_nb == 1 && data->collect_nb >= 1)
 		return (true);
 	return (false);
 }
 
+void	fill(t_data data, char **map, t_pos pos)
+{
+	if (pos.x < 0 || pos.x >= data.size.x || pos.y < 0 || pos.y >= data.size.y || map[pos.y][pos.x] == data.wall)
+		return ;
+
+	print_map(&data);
+	if (map[pos.y][pos.x] == data.collectible)
+		data.collect_nb--;
+	if (map[pos.y][pos.x] == data.exit)
+		data.exit_nb--;
+	if (map[pos.y][pos.x] == data.start)
+		data.start_nb--;
+
+	map[pos.y][pos.x] = '1';
+	fill(data, map, (t_pos){pos.x - 1, pos.y});
+	fill(data, map, (t_pos){pos.x + 1, pos.y});
+	fill(data, map, (t_pos){pos.x, pos.y - 1});
+	fill(data, map, (t_pos){pos.x, pos.y + 1});
+	
+}
+
+bool	is_solvable(t_data data)
+{
+	fill(data, data.map, data.pos);
+	if (data.collect_nb == 0 && data.exit_nb == 0 && data.start_nb == 0)
+		return (true);
+	return (false);
+}

@@ -6,7 +6,7 @@
 /*   By: bgauthie <bgauthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 13:04:36 by bgauthie          #+#    #+#             */
-/*   Updated: 2023/06/23 16:13:22 by bgauthie         ###   ########.fr       */
+/*   Updated: 2023/06/26 18:07:05 by bgauthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,11 @@ typedef struct	s_data
 	int		line_length;
 	int		endian;
 	char	**map;
+	t_pos	size;
+	t_pos	pos;
+	int		exit_nb;
+	int		start_nb;
+	int		collect_nb;
 }				t_data;
 
 char	**get_map();
@@ -50,8 +55,12 @@ bool	check_chars(t_data *data);
 
 
 void	set_struct(t_data *data);
+void	set_size(char **map, t_pos *size);
 int		print_error(void);
 void	print_map(t_data *data);
 int		nb_of(char *str, char c);
+
+bool	is_solvable(t_data data);
+void	fill(t_data data, char **map, t_pos pos);
 
 #endif
