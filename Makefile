@@ -4,7 +4,8 @@ RM = rm -rf
 SRC_PATH = ./src/
 SRC_FILE = so_long.c\
 			map_checker.c\
-			tools.c
+			tools.c\
+			free.c
 
 
 

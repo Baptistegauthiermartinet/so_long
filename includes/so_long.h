@@ -6,7 +6,7 @@
 /*   By: bgauthie <bgauthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 13:04:36 by bgauthie          #+#    #+#             */
-/*   Updated: 2023/06/26 18:07:05 by bgauthie         ###   ########.fr       */
+/*   Updated: 2023/06/27 17:29:47 by bgauthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,21 +46,27 @@ typedef struct	s_data
 }				t_data;
 
 char	**get_map();
-int		check_shape(char **map);
-bool	check_perimeter(char **map, t_data *data);
+bool	check_shape(t_data *data);
+bool	check_perimeter(t_data *data);
 bool	check_line(char *str, t_data *data);
 bool	check_chars(t_data *data);
+bool	check_map(t_data *data);
 
 
 
 
 void	set_struct(t_data *data);
-void	set_size(char **map, t_pos *size);
-int		print_error(void);
+void	set_size(t_data *data);
+void	set_pos(t_data *data);
+bool	print_error(char *str);
 void	print_map(t_data *data);
 int		nb_of(char *str, char c);
 
-bool	is_solvable(t_data data);
-void	fill(t_data data, char **map, t_pos pos);
+bool	is_solvable(t_data *data);
+void	fill(t_data *data, char **map, t_pos pos);
+
+
+void	free_struct(t_data *data);
+
 
 #endif

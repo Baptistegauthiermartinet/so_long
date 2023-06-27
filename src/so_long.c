@@ -6,7 +6,7 @@
 /*   By: bgauthie <bgauthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 13:47:12 by bgauthie          #+#    #+#             */
-/*   Updated: 2023/06/26 18:01:47 by bgauthie         ###   ########.fr       */
+/*   Updated: 2023/06/27 17:30:04 by bgauthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,11 @@ int main()
 {
 	t_data	data;
 
-	set_struct(&data);
 	data.map = get_map();
-	print_map(&data);
-	if (!check_perimeter(data.map, &data))
-		return (ft_printf("Erreur de map"));
-	if (!check_chars(&data))
-		return (ft_printf("c error"));
-	set_size(data.map, &(data.size));
-	if (is_solvable(data))
-		ft_printf("map ok\n");
+	set_struct(&data);
+	if (!check_map(&data))
+		free_struct(&data);
+	
 	return (1);
 	
 	

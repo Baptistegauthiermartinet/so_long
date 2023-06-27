@@ -6,7 +6,7 @@
 /*   By: bgauthie <bgauthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 14:09:47 by bgauthie          #+#    #+#             */
-/*   Updated: 2023/06/23 15:40:06 by bgauthie         ###   ########.fr       */
+/*   Updated: 2023/06/27 17:29:19 by bgauthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,9 @@ void	free_map(char **map)
 		i--;
 	}
 	free(map);
+}
+
+void	free_struct(t_data *data)
+{
+	free_map(data->map);
 }
