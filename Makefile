@@ -5,7 +5,9 @@ SRC_PATH = ./src/
 SRC_FILE = so_long.c\
 			map_checker.c\
 			tools.c\
-			free.c
+			free.c\
+			param_check.c\
+			game_init.c
 
 
 

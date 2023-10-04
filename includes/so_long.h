@@ -6,7 +6,7 @@
 /*   By: bgauthie <bgauthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 13:04:36 by bgauthie          #+#    #+#             */
-/*   Updated: 2023/06/27 17:29:47 by bgauthie         ###   ########.fr       */
+/*   Updated: 2023/10/04 13:58:54 by bgauthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct	s_data
 	int		collect_nb;
 }				t_data;
 
-char	**get_map();
+char	**get_map(int fd);
 bool	check_shape(t_data *data);
 bool	check_perimeter(t_data *data);
 bool	check_line(char *str, t_data *data);
@@ -67,6 +67,13 @@ void	fill(t_data *data, char **map, t_pos pos);
 
 
 void	free_struct(t_data *data);
+void	free_map(char **map);
+
+int	check_param(int ac, char **av);
+
+
+int	game_init(t_data data);
+
 
 
 #endif

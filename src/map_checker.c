@@ -6,22 +6,20 @@
 /*   By: bgauthie <bgauthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 16:36:24 by bgauthie          #+#    #+#             */
-/*   Updated: 2023/06/27 17:25:08 by bgauthie         ###   ########.fr       */
+/*   Updated: 2023/10/04 15:15:35 by bgauthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-char	**get_map(void)
-{
-	int		fd;
+char	**get_map(int fd)
+{	
 	char	*str;
 	char	*temp;
 	char	**map;
 
 	str = NULL;
 	temp = NULL;
-	fd = open("maps/map_2.ber", O_RDONLY);
 	if (fd < 0)
 		return (NULL);
 	str = get_next_line(fd);
@@ -147,6 +145,7 @@ void	fill(t_data *data, char **map, t_pos pos)
 
 bool	is_solvable(t_data *data)
 {
+	ft_printf("x= %d\ny= %d\n", data->pos.x, data->pos.y);
 	fill(data, data->map, data->pos);
 	if (data->collect_nb == 0 && data->exit_nb == 0 && data->start_nb == 0)
 		return (true);

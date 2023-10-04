@@ -6,7 +6,7 @@
 /*   By: bgauthie <bgauthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 14:03:49 by bgauthie          #+#    #+#             */
-/*   Updated: 2023/06/27 17:26:54 by bgauthie         ###   ########.fr       */
+/*   Updated: 2023/10/04 14:45:31 by bgauthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	set_pos(t_data *data)
 		{
 			if (data->map[i][j] == data->start)
 			{
-				data->pos.x = j;
-				data->pos.y = i;
+				data->pos.x = i;
+				data->pos.y = j;
 			}
 			j++;
 		}
@@ -45,8 +45,9 @@ void	set_size(t_data *data)
 		raw++;
 	while (data->map[line])
 		line++;
-	data->size.x = raw;
-	data->size.y = line;
+	data->size.x = line;
+	data->size.y = raw;
+	ft_printf("x = %d		y = %d\n", data->size.x, data->size.y);
 }
 
 void	set_struct(t_data *data)

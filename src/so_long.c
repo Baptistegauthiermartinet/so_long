@@ -6,7 +6,7 @@
 /*   By: bgauthie <bgauthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 13:47:12 by bgauthie          #+#    #+#             */
-/*   Updated: 2023/06/27 17:30:04 by bgauthie         ###   ########.fr       */
+/*   Updated: 2023/10/04 13:02:40 by bgauthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,26 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-int main()
+int main(int argc, char **argv)
 {
 	t_data	data;
-
-	data.map = get_map();
+//	void	*mlx;
+	
+	data.map = get_map(check_param(argc, argv));
 	set_struct(&data);
 	if (!check_map(&data))
 		free_struct(&data);
-	
+	free_map(data.map);
+	data.map = get_map(check_param(argc, argv));
+	print_map(&data);
+	game_init(data);
+	/*
+	mlx = mlx_init();
+
+	mlx_new_window(mlx, data.size.x*100, data.size.y*100, "Hello");
+	mlx_loop(mlx);
+	*/
 	return (1);
-	
-	
 	
 
 	
