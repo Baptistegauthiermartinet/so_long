@@ -6,7 +6,7 @@
 /*   By: bgauthie <bgauthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 16:36:24 by bgauthie          #+#    #+#             */
-/*   Updated: 2023/10/04 15:15:35 by bgauthie         ###   ########.fr       */
+/*   Updated: 2023/10/05 15:30:00 by bgauthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@ char	**get_map(int fd)
 		if (!temp)
 			break ;
 		str = join_and_free(str, temp);
+		free(temp);
 	}
 	map = ft_split(str, '\n');
+	free(str);
 	return (map);
 }
 
@@ -128,15 +130,15 @@ bool	check_map(t_data *data)
 void	fill(t_data *data, char **map, t_pos pos)
 {
 	if (pos.x < 0 || pos.x >= data->size.x || pos.y < 0
-		|| pos.y >= data->size.y || map[pos.y][pos.x] == data->wall)
+		|| pos.y >= data->size.y || map[pos.x][pos.y] == data->wall)
 		return ;
-	if (map[pos.y][pos.x] == data->collectible)
+	if (map[pos.x][pos.y] == data->collectible)
 		data->collect_nb--;
-	if (map[pos.y][pos.x] == data->exit)
+	if (map[pos.x][pos.y] == data->exit)
 		data->exit_nb--;
-	if (map[pos.y][pos.x] == data->start)
+	if (map[pos.x][pos.y] == data->start)
 		data->start_nb--;
-	map[pos.y][pos.x] = '1';
+	map[pos.x][pos.y] = '1';
 	fill(data, map, (t_pos){pos.x - 1, pos.y});
 	fill(data, map, (t_pos){pos.x + 1, pos.y});
 	fill(data, map, (t_pos){pos.x, pos.y - 1});
@@ -145,7 +147,6 @@ void	fill(t_data *data, char **map, t_pos pos)
 
 bool	is_solvable(t_data *data)
 {
-	ft_printf("x= %d\ny= %d\n", data->pos.x, data->pos.y);
 	fill(data, data->map, data->pos);
 	if (data->collect_nb == 0 && data->exit_nb == 0 && data->start_nb == 0)
 		return (true);
