@@ -6,7 +6,7 @@
 /*   By: bgauthie <bgauthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 13:04:36 by bgauthie          #+#    #+#             */
-/*   Updated: 2023/10/05 15:25:33 by bgauthie         ###   ########.fr       */
+/*   Updated: 2023/10/09 11:34:44 by bgauthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,15 @@ typedef struct	s_data
 	int		exit_nb;
 	int		start_nb;
 	int		collect_nb;
-//	void	*mlx_p;
-//	void	*win_p;
-//	void	*empty_p;
-//	void	*wall_p;
-//	void	*collect_p;
-//	void	*exit_p;
-//	void	*charac_p;
+	void	*mlx_p;
+	void	*win_p;
+	void	*empty_p;
+	void	*wall_p;
+	void	*collect_p;
+	void	*exit_p;
+	void	*charac_p;
+	int		width;
+	int		height;
 }				t_data;
 
 char	**get_map(int fd);

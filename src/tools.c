@@ -6,7 +6,7 @@
 /*   By: bgauthie <bgauthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 14:03:49 by bgauthie          #+#    #+#             */
-/*   Updated: 2023/10/05 15:33:11 by bgauthie         ###   ########.fr       */
+/*   Updated: 2023/10/09 13:54:40 by bgauthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,12 @@ void	set_struct(t_data *data)
 	data->start = 'P';
 	set_size(data);
 	set_pos(data);
+	data->wall_p = mlx_xpm_file_to_image(data->mlx_p, "pictures/wall.xpm", &(data->width), &(data->height));
+	data->exit_p = mlx_xpm_file_to_image(data->mlx_p, "pictures/exit.xpm", &(data->width), &(data->height));
+	data->empty_p = mlx_xpm_file_to_image(data->mlx_p, "pictures/empty.xpm", &(data->width), &(data->height));
+	data->collect_p = mlx_xpm_file_to_image(data->mlx_p, "pictures/collect.xpm", &(data->width), &(data->height));
+	data->charac_p = mlx_xpm_file_to_image(data->mlx_p, "pictures/player.xpm", &(data->width), &(data->height));
+
 	/*set pointeurs et images*/
 	
 }
