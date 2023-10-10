@@ -6,18 +6,17 @@
 /*   By: bgauthie <bgauthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 09:51:01 by bgauthie          #+#    #+#             */
-/*   Updated: 2023/10/04 11:35:03 by bgauthie         ###   ########.fr       */
+/*   Updated: 2023/10/10 17:01:09 by bgauthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-
 int	ft_strrncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
 	size_t	j;
-	
+
 	i = ft_strlen(s1) - 1;
 	j = ft_strlen(s2) - 1;
 	while (s1[i] && s2[j] && s1[i] == s2[j] && n > 0)
@@ -34,7 +33,7 @@ int	ft_strrncmp(const char *s1, const char *s2, size_t n)
 int	check_param(int ac, char **av)
 {
 	int	fd;
-	
+
 	if (ac != 2)
 	{
 		return (print_error("Wrong number of argument.\n"));

@@ -6,7 +6,7 @@
 /*   By: bgauthie <bgauthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 16:36:24 by bgauthie          #+#    #+#             */
-/*   Updated: 2023/10/05 15:30:00 by bgauthie         ###   ########.fr       */
+/*   Updated: 2023/10/10 17:52:06 by bgauthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ bool	check_chars(t_data *data)
 	while (data->map[i])
 	{
 		data->exit_nb += nb_of(data->map[i], data->exit);
-		data->start_nb += nb_of(data->map[i], data->start);
+		data->start_nb += nb_of(data->map[i], data->player);
 		data->collect_nb += nb_of(data->map[i], data->collectible);
 		i++;
 	}
@@ -119,7 +119,7 @@ bool	check_map(t_data *data)
 	if (!check_chars(data) && data->exit_nb != 1)
 		return (print_error("Wrong number of exit.\n"));
 	if (!check_chars(data) && data->start_nb != 1)
-		return (print_error("Wrong number of starting position.\n"));
+		return (print_error("Wrong number of players. Only one player is allowed.\n"));
 	if (!check_chars(data) && data->collect_nb < 1)
 		return (print_error("You need at least one collectible on the map.\n"));
 	if (!is_solvable(data))
@@ -136,7 +136,7 @@ void	fill(t_data *data, char **map, t_pos pos)
 		data->collect_nb--;
 	if (map[pos.x][pos.y] == data->exit)
 		data->exit_nb--;
-	if (map[pos.x][pos.y] == data->start)
+	if (map[pos.x][pos.y] == data->player)
 		data->start_nb--;
 	map[pos.x][pos.y] = '1';
 	fill(data, map, (t_pos){pos.x - 1, pos.y});

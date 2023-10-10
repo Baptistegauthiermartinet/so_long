@@ -7,7 +7,8 @@ SRC_FILE = so_long.c\
 			tools.c\
 			free.c\
 			param_check.c\
-			game_init.c
+			game_init.c\
+			move.c
 
 
 
