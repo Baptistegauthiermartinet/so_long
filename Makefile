@@ -4,11 +4,13 @@ RM = rm -rf
 SRC_PATH = ./src/
 SRC_FILE = so_long.c\
 			map_checker.c\
+			map_checker_tools.c\
 			tools.c\
 			free.c\
 			param_check.c\
 			game_init.c\
-			move.c
+			move.c\
+			set_struct.c
 
 
 
