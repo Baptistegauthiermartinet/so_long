@@ -34,9 +34,9 @@ MLX_LIB = $(addprefix $(MLX_PATH), $(MLX_FILE))
 MLX_FLAGS = -lX11 -lXext
 MLX_EX = $(MLX_LIB) $(MLX_FLAGS)
 
-all : $(NAME)
+all : lib mlx $(NAME) 
 
-$(NAME) : $(OBJ_PATH) $(OBJ) lib mlx Makefile
+$(NAME) : $(OBJ_PATH) $(OBJ)
 	$(CC) $(OBJ) $(LIBFT_LIB) $(MLX_EX) -o $(NAME)
 
 $(OBJ_PATH)%.o : %.c $(INC)

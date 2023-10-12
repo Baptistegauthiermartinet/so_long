@@ -6,7 +6,7 @@
 /*   By: bgauthie <bgauthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 12:59:52 by bgauthie          #+#    #+#             */
-/*   Updated: 2023/10/11 15:29:31 by bgauthie         ###   ########.fr       */
+/*   Updated: 2023/10/12 17:16:01 by bgauthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void	fill_window(t_data data)
 	int	j;
 
 	i = 0;
-	mlx_clear_window(data.mlx_p, data.win_p);
 	while (i < data.size.x)
 	{
 		j = 0;
