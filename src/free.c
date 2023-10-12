@@ -6,7 +6,7 @@
 /*   By: bgauthie <bgauthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 14:09:47 by bgauthie          #+#    #+#             */
-/*   Updated: 2023/10/11 15:47:28 by bgauthie         ###   ########.fr       */
+/*   Updated: 2023/10/12 18:52:38 by bgauthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,16 @@ void	free_map(char **map)
 
 void	destroy_images(t_data *data)
 {
-	mlx_destroy_image(data->mlx_p, data->empty_p);
-	mlx_destroy_image(data->mlx_p, data->wall_p);
-	mlx_destroy_image(data->mlx_p, data->collect_p);
-	mlx_destroy_image(data->mlx_p, data->exit_p);
-	mlx_destroy_image(data->mlx_p, data->charac_p);
+	if (data->empty_p)
+		mlx_destroy_image(data->mlx_p, data->empty_p);
+	if (data->wall_p)
+		mlx_destroy_image(data->mlx_p, data->wall_p);
+	if (data->collect_p)
+		mlx_destroy_image(data->mlx_p, data->collect_p);
+	if (data->exit_p)
+		mlx_destroy_image(data->mlx_p, data->exit_p);
+	if (data->charac_p)
+		mlx_destroy_image(data->mlx_p, data->charac_p);
 }
 
 void	free_struct(t_data *data)

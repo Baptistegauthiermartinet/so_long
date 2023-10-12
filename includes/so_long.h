@@ -6,7 +6,7 @@
 /*   By: bgauthie <bgauthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 13:04:36 by bgauthie          #+#    #+#             */
-/*   Updated: 2023/10/12 16:04:28 by bgauthie         ###   ########.fr       */
+/*   Updated: 2023/10/12 19:07:31 by bgauthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include "../mlx_linux/mlx.h"
 # include <fcntl.h>
 # include <stdbool.h>
-
 
 # define ESC 65307
 # define W 119
@@ -33,7 +32,7 @@ typedef struct s_pos
 	int	y;
 }				t_pos;
 
-typedef struct	s_data 
+typedef struct s_data
 {
 	char	empty;
 	char	wall;
@@ -92,7 +91,7 @@ void	move_image_u_d(int dir, t_data *data);
 void	move_image_r_l(int dir, t_data *data);
 
 /* param_check.c*/
-int	ft_strrncmp(const char *s1, const char *s2, size_t n);
+int		ft_strrncmp(const char *s1, const char *s2, size_t n);
 int		check_param(int ac, char **av);
 
 /* set_struc.c */

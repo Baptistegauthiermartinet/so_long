@@ -6,7 +6,7 @@
 /*   By: bgauthie <bgauthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 14:59:22 by bgauthie          #+#    #+#             */
-/*   Updated: 2023/10/11 15:59:39 by bgauthie         ###   ########.fr       */
+/*   Updated: 2023/10/12 19:05:40 by bgauthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	set_size(t_data *data)
 		line++;
 	data->size.x = line;
 	data->size.y = raw;
+	set_pos(data);
 }
 
 void	set_struct(t_data *data)
@@ -82,7 +83,6 @@ void	set_struct(t_data *data)
 	data->on_exit = 0;
 	data->win_p = 0;
 	set_size(data);
-	set_pos(data);
 	data->wall_p = mlx_xpm_file_to_image(data->mlx_p,
 			"pictures/wall.xpm", &(data->width), &(data->height));
 	data->exit_p = mlx_xpm_file_to_image(data->mlx_p,
@@ -93,4 +93,10 @@ void	set_struct(t_data *data)
 			"pictures/collect.xpm", &(data->width), &(data->height));
 	data->charac_p = mlx_xpm_file_to_image(data->mlx_p,
 			"pictures/player.xpm", &(data->width), &(data->height));
+	if (!data->wall_p || !data->empty_p || !data->charac_p
+		|| !data->collect_p || !data->exit_p)
+	{
+		print_error("Invalid or missing xpm file(s).\n");
+		exit_game(data);
+	}
 }
