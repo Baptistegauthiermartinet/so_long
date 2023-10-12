@@ -6,7 +6,7 @@
 /*   By: bgauthie <bgauthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 13:04:36 by bgauthie          #+#    #+#             */
-/*   Updated: 2023/10/11 15:58:50 by bgauthie         ###   ########.fr       */
+/*   Updated: 2023/10/12 16:04:28 by bgauthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	fill_window(t_data data);
 int		game_init(t_data data);
 
 /* map_checker_tools.c*/
+bool	allowed_chars(t_data *data);
 bool	check_shape(t_data *data);
 bool	check_perimeter(t_data *data);
 bool	check_line(char *str, t_data *data);

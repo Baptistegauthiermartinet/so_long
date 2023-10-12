@@ -6,11 +6,36 @@
 /*   By: bgauthie <bgauthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 15:31:05 by bgauthie          #+#    #+#             */
-/*   Updated: 2023/10/11 15:35:16 by bgauthie         ###   ########.fr       */
+/*   Updated: 2023/10/12 16:04:14 by bgauthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+bool	allowed_chars(t_data *data)
+{
+	char	**tab;
+	int		i;
+	int		j;
+
+	tab = data->map;
+	i = 0;
+	while (tab[i])
+	{
+		j = 0;
+		while (tab[i][j])
+		{
+			if (tab[i][j] == data->wall || tab[i][j] == data->empty
+				|| tab[i][j] == data->collectible
+				|| tab[i][j] == data->player || tab[i][j] == data->exit)
+				j++;
+			else
+				return (false);
+		}
+		i++;
+	}
+	return (true);
+}
 
 bool	check_shape(t_data *data)
 {

@@ -6,7 +6,7 @@
 /*   By: bgauthie <bgauthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 16:36:24 by bgauthie          #+#    #+#             */
-/*   Updated: 2023/10/11 15:31:43 by bgauthie         ###   ########.fr       */
+/*   Updated: 2023/10/12 16:00:17 by bgauthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ char	**get_map(int fd)
 
 bool	check_map(t_data *data)
 {
+	if (!allowed_chars(data))
+		return (print_error("Only use '1' '0' 'P' 'C' 'E' please.\n"));
 	if (!check_shape(data))
 		return (print_error("Map is not rectangular.\n"));
 	if (!check_perimeter(data))
